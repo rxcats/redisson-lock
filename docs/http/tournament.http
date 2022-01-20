@@ -1,0 +1,18 @@
+GET {{host}}/tournament/groups
+Authorization: 100
+###
+
+
+GET {{host}}/tournament/groups/1642693540888
+Authorization: 100
+###
+
+
+POST {{host}}/tournament/groups/1
+Authorization: 100
+###
+
+
+DELETE {{host}}/tournament/groups/1
+Authorization: 100
+###

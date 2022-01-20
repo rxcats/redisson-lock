@@ -1,0 +1,4 @@
+// count 만큼 parallel 로 그룹할당 api 를 호출
+POST {{host}}/client/parallel?count=123
+Authorization: 100
+###
