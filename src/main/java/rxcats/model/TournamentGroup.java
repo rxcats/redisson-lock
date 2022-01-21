@@ -1,29 +1,50 @@
 package rxcats.model;
 
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.domain.Persistable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Objects;
 
-@NoArgsConstructor
-@Getter
-@Setter
 @ToString
 @Entity
-public class TournamentGroup {
+public class TournamentGroup implements Persistable<Long> {
 
     @Id
+    @Getter
+    @Setter
     private Long tid;
 
+    @Getter
+    @Setter
     private Integer groupId;
 
+    @Getter
+    @Setter
     private Integer userCount;
 
+    @Getter
+    @Setter
     private Integer totalUserCount;
+
+    private transient boolean isNew = false;
+
+    public TournamentGroup() {
+
+    }
+
+    public TournamentGroup(Long tid) {
+        this.tid = tid;
+    }
+
+    public static TournamentGroup ofForceInsert(Long tid) {
+        var tg = new TournamentGroup(tid);
+        tg.isNew = true;
+        return tg;
+    }
 
     public boolean isFullGroup(Integer maxUser) {
         return userCount + 1 > maxUser;
@@ -61,4 +82,13 @@ public class TournamentGroup {
         return Objects.hash(tid);
     }
 
+    @Override
+    public Long getId() {
+        return tid;
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew;
+    }
 }

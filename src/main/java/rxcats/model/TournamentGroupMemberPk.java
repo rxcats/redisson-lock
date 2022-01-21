@@ -19,18 +19,20 @@ public class TournamentGroupMemberPk implements Serializable {
 
     private Integer groupId;
 
-    public TournamentGroupMemberPk(Long tid) {
-
-    }
-
-    public TournamentGroupMemberPk(Long tid, Integer groupId) {
-
-    }
-
     public TournamentGroupMemberPk(Long tid, Integer groupId, Long uid) {
         this.tid = tid;
         this.groupId = groupId;
         this.uid = uid;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        TournamentGroupMemberPk that = (TournamentGroupMemberPk) o;
+        return Objects.equals(tid, that.tid) &&
+            Objects.equals(uid, that.uid) &&
+            Objects.equals(groupId, that.groupId);
     }
 
     @Override

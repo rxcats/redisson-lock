@@ -10,7 +10,6 @@ import javax.persistence.Id;
 import javax.persistence.IdClass;
 import java.util.Objects;
 
-@NoArgsConstructor
 @Getter
 @Setter
 @ToString
@@ -27,10 +26,18 @@ public class TournamentGroupMember {
     @Id
     private Integer groupId;
 
+    public TournamentGroupMember() {
+
+    }
+
     public TournamentGroupMember(TournamentGroupMemberPk pk) {
         this.tid = pk.getTid();
         this.groupId = pk.getGroupId();
         this.uid = pk.getUid();
+    }
+
+    public TournamentGroupMemberPk toPk() {
+        return new TournamentGroupMemberPk(tid, groupId, uid);
     }
 
     @Override
