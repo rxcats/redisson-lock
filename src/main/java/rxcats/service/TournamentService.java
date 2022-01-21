@@ -57,7 +57,7 @@ public class TournamentService {
 
     public TournamentGroupMember addGroupMember(TournamentGroup group, Long uid) {
         var pk = new TournamentGroupMemberPk(group.getTid(), group.getGroupId(), uid);
-        var member = new TournamentGroupMember(pk);
+        var member = TournamentGroupMember.ofForceInsert(pk);
         return tournamentGroupMemberRepository.save(member);
     }
 

@@ -3,27 +3,34 @@ package rxcats.model;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.data.domain.Persistable;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
 import java.util.Objects;
 
-@Getter
-@Setter
 @ToString
 @IdClass(TournamentGroupMemberPk.class)
 @Entity
-public class TournamentGroupMember {
+public class TournamentGroupMember implements Persistable<Long> {
 
     @Id
+    @Getter
+    @Setter
     private Long tid;
 
     @Id
+    @Getter
+    @Setter
     private Long uid;
 
     @Id
+    @Getter
+    @Setter
     private Integer groupId;
+
+    private transient boolean isNew = false;
 
     public TournamentGroupMember() {
 
@@ -37,6 +44,18 @@ public class TournamentGroupMember {
 
     public TournamentGroupMemberPk toPk() {
         return new TournamentGroupMemberPk(tid, groupId, uid);
+    }
+
+    public static TournamentGroupMember ofForceInsert() {
+        var member = new TournamentGroupMember();
+        member.isNew = true;
+        return member;
+    }
+
+    public static TournamentGroupMember ofForceInsert(TournamentGroupMemberPk pk) {
+        var member = new TournamentGroupMember(pk);
+        member.isNew = true;
+        return member;
     }
 
     @Override
@@ -54,4 +73,13 @@ public class TournamentGroupMember {
         return Objects.hash(tid, groupId, uid);
     }
 
+    @Override
+    public Long getId() {
+        return null;
+    }
+
+    @Override
+    public boolean isNew() {
+        return isNew;
+    }
 }
