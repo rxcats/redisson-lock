@@ -41,9 +41,7 @@ public class TournamentService {
             newGroup.setTid(tid);
             newGroup.initialize();
 
-            tournamentGroupRepository.save(newGroup);
-
-            return newGroup;
+            return tournamentGroupRepository.save(newGroup);
         } else {
             if (group.get().isFullGroup(MAX_USER)) {
                 group.get().addGroup();
@@ -53,9 +51,7 @@ public class TournamentService {
 
             group.get().incrTotalUserCount();
 
-            tournamentGroupRepository.save(group.get());
-
-            return group.get();
+            return tournamentGroupRepository.save(group.get());
         }
 
     }
