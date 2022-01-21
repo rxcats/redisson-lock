@@ -37,8 +37,7 @@ public class TournamentService {
         Optional<TournamentGroup> group = tournamentGroupRepository.findById(tid);
 
         if (group.isEmpty()) {
-            var newGroup = new TournamentGroup();
-            newGroup.setTid(tid);
+            var newGroup = TournamentGroup.ofForceInsert(tid);
             newGroup.initialize();
 
             return tournamentGroupRepository.save(newGroup);
