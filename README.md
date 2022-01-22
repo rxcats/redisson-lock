@@ -56,3 +56,4 @@ public class LockTest {
 ## 프로젝트 구성 부가설명
 - Redisson 으로 lock 을 간편하게 사용하기 위해 AOP를 도입
 - `RedissonLock` annotation을 메소드에 설정하게 되면 `RedissonLockAdvice` AOP 가 동작되도록 설정
+- MySQL 8.0.x 이상 필요

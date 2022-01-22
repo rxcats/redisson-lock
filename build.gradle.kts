@@ -38,7 +38,7 @@ dependencies {
     annotationProcessor("jakarta.annotation:jakarta.annotation-api")
 
     // flyway
-    implementation("org.flywaydb:flyway-core:7.15.0")
+    implementation("org.flywaydb:flyway-core")
 
     // lombok
     compileOnly("org.projectlombok:lombok")
