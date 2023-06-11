@@ -8,7 +8,7 @@
 - 인증은 임시로 Authorization 에 uid (userId) 를 넣어 사용
 
 ## Redisson Distributed lock
-- Redisson은 `Spinlock` 을 사용하지 않습니다.
+- https://github.com/redisson/redisson/wiki/8.-Distributed-locks-and-synchronizers
 - pubsub 기능을 사용하여 락이 해제될 때마다 subscribe 하는 클라이언트들에게 락 획득을 시도해도 된다고 알려줍니다.
 - timeout 이 지나면 최종적으로 `false` 를 반환하고 락 획득에 실패했음을 알려줍니다.
 - Lua Script를 사용하여 command 를 한번에 redis에 전송하여 atomic을 보장하면서 동시에 성능을 높이고 있습니다.
